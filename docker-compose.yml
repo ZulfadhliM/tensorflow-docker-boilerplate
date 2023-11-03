@@ -1,0 +1,33 @@
+version: '3'
+
+services:
+  tensorflow_gpu:
+    container_name: tensorflow_gpu
+    build:
+      context: .
+      dockerfile: Dockerfile.gpu
+    volumes:
+      - ./tests:/tests
+  tensorflow_cpu:
+    container_name: tensorflow_cpu
+    build:
+      context: .
+      dockerfile: Dockerfile.cpu
+    volumes:
+      - ./tests:/tests
+  tensorflow_gpu_test:
+    container_name: tensorflow_gpu_test
+    build:
+      context: .
+      dockerfile: Dockerfile.gpu
+    volumes:
+      - ./tests:/tests
+    entrypoint: python tests/run.py
+  tensorflow_cpu_test:
+    container_name: tensorflow_cpu_test
+    build:
+      context: .
+      dockerfile: Dockerfile.cpu
+    volumes:
+      - ./tests:/tests
+    entrypoint: python tests/run.py
