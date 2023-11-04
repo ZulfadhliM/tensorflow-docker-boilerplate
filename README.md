@@ -6,6 +6,18 @@ There are two different docker images, where one is used for running Tensorflow 
 The GPU docker image includes the installed Nvidia drivers. The GPU image can still run on a CPU-only machines, but best practise is to use CPU docker images
 for CPU machines since the docker image size is smaller.
 
+To start an interactive bash shell in a CPU-only Docker container:
+
+```shell
+docker compose run --rm tensorflow_cpu
+```
+
+To start an interactive bash shell in a GPU-supported Docker container:
+
+```shell
+docker compose run --rm tensorflow_gpu
+```
+
 To run CPU test:
 
 ```shell
